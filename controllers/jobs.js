@@ -25,14 +25,8 @@ const getUserJobs = async (req, res) => {
         queryObject.company = { $regex: company, $options: 'i'}
     }
     
-    const result = await Job.find(queryObject).sort("-createdAt")
+    const jobs = await Job.find(queryObject).sort("-createdAt")
 
-    const page = Number(req.query.page) || 1
-    const limit = Number(req.query.limit) || 10
-    const nextPage = (page - 1) * limit
-
-    const paginatedResults = result.skip(nextPage).limit(limit)
-    const jobs = await paginatedResults
     res.status(StatusCodes.OK).json({ jobs, nbHits: jobs.length })
 }
 
