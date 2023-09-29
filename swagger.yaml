@@ -248,7 +248,7 @@ security: []
 tags:
 - name: Auth
   description: ''
-- name: Jobs
-  description: ''
 - name: Get All Jobs
-  description: ''
+  description: 'Get all Jobs available(Public Route)'
+- name: Jobs
+  description: 'Perform Crud Operations on Jobs(Private Route)'
